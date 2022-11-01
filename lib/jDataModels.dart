@@ -6,22 +6,34 @@ import 'dart:convert';
 ///[String] getter [securityPatch]
 ///[String] getter [codeName]
 ///[String] getter [release]
-///Has [JAndroidInfo.fromMap]
+///Has [JAndroidInfo.fromMap] Constructor
 ///has [Map]type method called [toMap]
 ///has [String]type method called [toString]
 class JAndroidInfo {
+  /// [JAndroidInfo] Constructor
   JAndroidInfo();
   String _fAndroidId = "",
       _fAndroidSdk = "",
       _fAndroidSecurityPatch = "",
       _fAndroidCodeName = "",
       _fAndroidRelease = "";
+
+  ///[String] getter [androidId]
   String get androidId => _fAndroidId;
+
+  ///[String] getter [androidSdk]
   String get androidSdk => _fAndroidSdk;
 
+  ///[String] getter [securityPatch]
   String get securityPatch => _fAndroidSecurityPatch;
+
+  ///[String] getter [codeName]
   String get codeName => _fAndroidCodeName;
+
+  ///[String] getter [release]
   String get release => _fAndroidRelease;
+
+  /// [JAndroidInfo.fromMap] Constructor
   JAndroidInfo.fromMap(var data) {
     _fAndroidId = data["01"].toString();
     _fAndroidSdk = data["02"].toString();
@@ -29,6 +41,8 @@ class JAndroidInfo {
     _fAndroidCodeName = data["04"].toString();
     _fAndroidRelease = data["05"].toString();
   }
+
+  /// [Map]type method called [toMap]
   Map<String, dynamic> toMap() => {
         "androidId": _fAndroidId,
         "androidSdk": _fAndroidSdk,
@@ -36,6 +50,8 @@ class JAndroidInfo {
         "codeName": _fAndroidCodeName,
         "release": _fAndroidRelease,
       };
+
+  /// [String]type method called [toString]
   @override
   String toString() {
     return json.encode(toMap());
@@ -57,10 +73,11 @@ class JAndroidInfo {
 ///[String] getter [product]
 ///[String] getter [bootloader]
 ///[String] _ [List] getter [deviceApis]
-///Has [JHardwareInfo.fromMap]
+///Has [JHardwareInfo.fromMap] Constructor
 ///has [Map]type method called [toMap]
 ///has [String]type method called [toString]
 class JHardwareInfo {
+  /// [JHardwareInfo] Constructor
   JHardwareInfo();
   String _fAndroidId = "",
       _fDevice = "",
@@ -76,20 +93,50 @@ class JHardwareInfo {
       _fProduct = "",
       _fBootloader = "";
   List<String> _fDeviceApis = [];
+
+  ///[String] getter [androidId]
   String get androidId => _fAndroidId;
+
+  ///[String] getter [device]
   String get device => _fDevice;
+
+  ///[String] getter [model]
   String get model => _fModel;
+
+  ///[String] getter [board]
   String get board => _fBoard;
+
+  ///[String] getter [brand]
   String get brand => _fBrand;
+
+  ///[String] getter [display]
   String get display => _fDisplay;
+
+  ///[String] getter [fingerPrint]
   String get fingerPrint => _fFingerPrint;
+
+  ///[String] getter [batteryLevel]
   String get batteryLevel => _fBatteryLevel;
+
+  ///[String] getter [deviceId]
   String get deviceId => _fDeviceId;
+
+  ///[String] getter [host]
   String get host => _fHost;
+
+  ///[String] getter [manufacturer]
   String get manufacturer => _fManufacturer;
+
+  ///[String] getter [product]
   String get product => _fProduct;
+
+  ///[String] getter [bootloader]
   String get bootloader => _fBootloader;
+
+  ///[String] _ [List] getter [deviceApis]
   List<String> get deviceApis => _fDeviceApis;
+
+  ///[JHardwareInfo.fromMap] Constructor
   JHardwareInfo.fromMap(var data) {
     _fAndroidId = data["01"].toString();
     _fDevice = data["02"].toString();
@@ -114,6 +161,7 @@ class JHardwareInfo {
     return ss;
   }
 
+  /// [Map]type method called [toMap]
   Map<String, dynamic> toMap() => {
         "androidId": _fAndroidId,
         "device": _fDevice,
@@ -130,6 +178,8 @@ class JHardwareInfo {
         "bootloader": _fBootloader,
         "deviceApis": _fDeviceApis,
       };
+
+  /// [String]type method called [toString]
   @override
   String toString() {
     return json.encode(toMap());
@@ -137,6 +187,7 @@ class JHardwareInfo {
 }
 
 ///class [JApplicationInfo] has
+
 ///[String] getter [versionCode]
 ///[String] getter [versionName]
 ///[String] getter [appName]
@@ -146,10 +197,11 @@ class JHardwareInfo {
 ///[String] getter [firstInstall]
 ///[String] getter [dataDir]
 ///[String] _ [List] getter [permissions]
-///Has [JApplicationInfo.fromMap]
+///Has [JApplicationInfo.fromMap] Constructor
 ///has [Map]type method called [toMap]
 ///has [String]type method called [toString]
 class JApplicationInfo {
+  /// [JApplicationInfo] Constructor
   JApplicationInfo();
   String _fAppVersionCode = "",
       _fAppVersionName = "",
@@ -160,15 +212,35 @@ class JApplicationInfo {
       _fAppUid = "",
       _fAppDataDir = "";
   List<String> _fAppPermissions = [];
+
+  ///[String] getter [versionCode]
   String get versionCode => _fAppVersionCode;
+
+  ///[String] getter [versionName]
   String get versionName => _fAppVersionName;
+
+  ///[String] getter [appName]
   String get appName => _fAppName;
+
+  ///[String] getter [appUid]
   String get appUid => _fAppUid;
+
+  ///[String] getter [packageName]
   String get packageName => _fAppPackageName;
+
+  ///[String] getter [targetSdk]
   String get targetSdk => _fAppTargetSdk;
+
+  ///[String] getter [firstInstall]
   String get firstInstall => _fAppFirstInstall;
+
+  ///[String] getter [dataDir]
   String get dataDir => _fAppDataDir;
+
+  ///[String] _ [List] getter [permissions]
   List<String> get permissions => _fAppPermissions;
+
+  /// [JApplicationInfo.fromMap] Constructor
   JApplicationInfo.fromMap(var data) {
     _fAppVersionCode = data["01"].toString();
     _fAppVersionName = data["02"].toString();
@@ -188,6 +260,7 @@ class JApplicationInfo {
     return ss;
   }
 
+  /// [Map]type method called [toMap]
   Map<String, dynamic> toMap() => {
         "appUid": _fAppUid,
         "versionCode": _fAppVersionCode,
@@ -199,6 +272,8 @@ class JApplicationInfo {
         "dataDir": _fAppDataDir,
         "permissions": _fAppPermissions,
       };
+
+  /// [String]type method called [toString]
   @override
   String toString() {
     return json.encode(toMap());
@@ -216,7 +291,7 @@ class JApplicationInfo {
 ///[String] getter [subscribeId]
 ///[String] getter [mcc]
 ///[String] getter [mnc]
-///Has [JSimInfo.fromMap]
+///Has [JSimInfo.fromMap] Constructor
 ///has [Map]type method called [toMap]
 ///has [String]type method called [toString]
 class JSimInfo {
@@ -230,16 +305,38 @@ class JSimInfo {
       _fSimSubscriptionId = "",
       _fSimMcc = "",
       _fSimMnc = "";
+
+  ///[String] getter [slotIndex]
   String get slotIndex => _fSimSlotIndex;
+
+  ///[String] getter [iccId]
   String get iccId => _fSimIccId;
+
+  ///[String] getter [cardId]
   String get cardId => _fSimCardId;
+
+  ///[String] getter [carrierId]
   String get carrierId => _fSimCarrierId;
+
+  ///[String] getter [carrierName]
   String get carrierName => _fSimCarrierName;
+
+  ///[String] getter [countryIso]
   String get countryIso => _fSimCountryIso;
+
+  ///[String] getter [displayName]
   String get displayName => _fSimDisplayName;
+
+  ///[String] getter [subscribeId]
   String get subscribeId => _fSimSubscriptionId;
+
+  ///[String] getter [mcc]
   String get mcc => _fSimMcc;
+
+  ///[String] getter [mnc]
   String get mnc => _fSimMnc;
+
+  /// [JSimInfo.fromMap] Constructor
   JSimInfo.fromMap(var data) {
     _fSimSlotIndex = data["01"].toString();
     _fSimIccId = data["02"].toString();
@@ -252,6 +349,8 @@ class JSimInfo {
     _fSimMcc = data["09"].toString();
     _fSimMnc = data["010"].toString();
   }
+
+  /// [Map]type method called [toMap]
   Map<String, dynamic> toMap() => {
         "slotIndex": _fSimSlotIndex,
         "iccId": _fSimIccId,
@@ -264,6 +363,8 @@ class JSimInfo {
         "mcc": _fSimMcc,
         "mnc": _fSimMnc,
       };
+
+  /// [String]type method called [toString]
   @override
   String toString() {
     return json.encode(toMap());
@@ -275,19 +376,30 @@ class JSimInfo {
 ///[JHardwareInfo] getter [hardwareInfo]
 ///[JApplicationInfo] getter [appInfo]
 ///[JSimInfo] _ [List] getter [simInfo]
-///Has [JInfoModel.fromMap]
+///Has [JInfoModel.fromMap] Constructor
 ///has [Map]type method called [toMap]
 ///has [String]type method called [toString]
 class JInfoModel {
+  /// [JInfoModel] Constructor
   JInfoModel();
   JAndroidInfo _fAndroidInf = JAndroidInfo();
   JHardwareInfo _fJDeviceInfo = JHardwareInfo();
   JApplicationInfo _fJApplicationInfo = JApplicationInfo();
   List<JSimInfo> _fJSimInfo = [];
+
+  ///[JAndroidInfo] getter [androidInfo]
   JAndroidInfo get androidInfo => _fAndroidInf;
+
+  ///[JHardwareInfo] getter [hardwareInfo]
   JHardwareInfo get hardwareInfo => _fJDeviceInfo;
+
+  ///[JApplicationInfo] getter [appInfo]
   JApplicationInfo get appInfo => _fJApplicationInfo;
+
+  ///[JSimInfo] _ [List] getter [simInfo]
   List<JSimInfo> get simInfo => _fJSimInfo;
+
+  /// [JInfoModel.fromMap] Constructor
   JInfoModel.fromMap(var data) {
     _fAndroidInf = JAndroidInfo.fromMap(json.decode(data["01"]));
     _fJDeviceInfo = JHardwareInfo.fromMap(json.decode(data["02"]));
@@ -310,12 +422,15 @@ class JInfoModel {
     return ss;
   }
 
+  /// [Map]type method called [toMap]
   Map<String, dynamic> toMap() => {
         "androidInfo": _fAndroidInf.toString(),
         "hardwareInfo": _fJDeviceInfo.toString(),
         "appInfo": _fJApplicationInfo.toString(),
         "simInfo": _getS(_fJSimInfo),
       };
+
+  /// [String]type method called [toString]
   @override
   String toString() {
     return json.encode(toMap());

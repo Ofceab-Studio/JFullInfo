@@ -13,7 +13,7 @@ JFullInfo: Just An Amazing Full Hardware, System, Sim & Application Information 
 ## Usage
 To Use `jfullinfo`
 
-#Android
+First:
 To Use `getSimInformation` Method Add to `AndroidManifest.xml` this Permission:
 ```xml
  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>

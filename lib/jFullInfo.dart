@@ -3,10 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:jfullinfo/jDataModels.dart';
 
 ///[JFullInfo] The root class for jfullinfo Plugin
+///
 /// has a [Future] method called [getAndroidInformation] has [JAndroidInfo] return type.
+///
 /// has a [Future] method called [getHardwareInformation] has [JHardwareInfo] return type.
+///
 /// has a [Future] method called [getApplicationInformation] has [JApplicationInfo] return type.
+///
 /// has a [Future] method called [getAllInformation] has [JInfoModel] return type.
+///
 /// has a [Future] method called [getSimInformation] has [List] of [JSimInfo] return type.
 class JFullInfo {
   static const String _ANDROID_INFO = "AndroidInfo";

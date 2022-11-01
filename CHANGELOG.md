@@ -1,3 +1,5 @@
+## 0.5.1
+* Provides Docs Device Information
 ## 0.5.0
 
 * Initial Release
