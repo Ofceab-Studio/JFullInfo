@@ -41,12 +41,6 @@ class JFullInfoPlugin: FlutterPlugin, ActivityAware,MethodCallHandler {
         }
         "SimInfo" -> {
             jInfoProvider!!.getSimInfo(result)
-
-
-        }
-        "DeviceInfo" -> {
-        jInfoProvider!!.getDeviceInfo(result)
-
         }
         "ApplicationInfo" -> {
        jInfoProvider!!.getApplicationInfo(result)

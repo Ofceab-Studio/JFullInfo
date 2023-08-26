@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _state = 'Unknown';
-  final _jFullInfo = JFullInfo();
+  final _jFullInfo = JFullInfo.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
             FloatingActionButton(
               child: const Icon(Icons.android),
               onPressed: () async {
-                final val = await _jFullInfo.getAndroidInformation();
+                final val = await _jFullInfo.getAllInformation();
                 debugPrint(val.toString());
                 setState(() {
                   _state = val.toString();
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
             FloatingActionButton(
               child: const Icon(Icons.device_unknown),
               onPressed: () async {
-                final val = await _jFullInfo.getHardwareInformation();
+                final val = await _jFullInfo.applicationInfo;
                 debugPrint(val.toString());
                 setState(() {
                   _state = val.toString();

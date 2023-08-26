@@ -11,16 +11,14 @@ import org.json.JSONObject
  }
 data class JInfoModel(
     var fJAndroidInfo: JAndroidInfo ,
-    var fJDeviceInfo: JDeviceInfo,
     var fJSimInfo: ArrayList<JSimInfo> = ArrayList(),
     var fJApplicationInfo: JApplicationInfo){
 
     private fun toMap(): Map<String, Any> {
         return mapOf(
             "01" to fJAndroidInfo.toString(),
-            "02" to fJDeviceInfo.toString(),
-            "03" to convertListToS(fJSimInfo),
-            "04" to fJApplicationInfo.toString())
+            "02" to convertListToS(fJSimInfo),
+            "03" to fJApplicationInfo.toString())
     }
     override fun toString(): String {
         return JSONObject(toMap()).toString()
@@ -33,22 +31,6 @@ data class JAndroidInfo(
     var fAndroidSecurityPatch:String = "",
     var fAndroidCodeName:String = "",
     var fAndroidRelease:String = "",
-){
-    private fun toMap(): Map<String, Any> {
-        return mapOf(
-            "01" to fAndroidId,
-            "02" to fAndroidSdk,
-            "03" to fAndroidSecurityPatch,
-            "04" to fAndroidCodeName,
-            "05" to fAndroidRelease,
-        )
-    }
-    override fun toString(): String {
-        return JSONObject(toMap()).toString()
-    }
-}
-data class JDeviceInfo(
-    var fAndroidId: String ="",
     var fDeviceDevice: String ="",
     var fDeviceModel: String ="",
     var fDeviceBoard: String ="",
@@ -66,25 +48,30 @@ data class JDeviceInfo(
     private fun toMap(): Map<String, Any> {
         return mapOf(
             "01" to fAndroidId,
-            "02" to fDeviceDevice,
-            "03" to fDeviceModel,
-            "04" to fDeviceBoard,
-            "05" to fDeviceBrand,
-            "06" to fDeviceDisplay,
-            "07" to fDeviceFingerPrint,
-            "08" to fDeviceBatteryLevel,
-            "09" to fDeviceId,
-            "010" to fDeviceHost,
-            "011" to fDeviceManufacturer,
-            "012" to fDeviceProduct,
-            "013" to fDeviceBootloader,
-            "014" to fDeviceApis,
+            "02" to fAndroidSdk,
+            "03" to fAndroidSecurityPatch,
+            "04" to fAndroidCodeName,
+            "05" to fAndroidRelease,
+            "06" to fDeviceDevice,
+            "07" to fDeviceModel,
+            "08" to fDeviceBoard,
+            "09" to fDeviceBrand,
+            "010" to fDeviceDisplay,
+            "011" to fDeviceFingerPrint,
+            "012" to fDeviceBatteryLevel,
+            "013" to fDeviceId,
+            "014" to fDeviceHost,
+            "015" to fDeviceManufacturer,
+            "016" to fDeviceProduct,
+            "017" to fDeviceBootloader,
+            "018" to fDeviceApis,
         )
     }
     override fun toString(): String {
         return JSONObject(toMap()).toString()
     }
 }
+
 data class JSimInfo(
     var fSimSlotIndex: String ="",
     var fSimIccId: String ="",

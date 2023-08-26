@@ -1,15 +1,22 @@
 name: jfullinfo
-description: Just An Amazing Full Hardware, System, SIM Cards & Application Information Plugin For Android Devices.
-version: 0.5.1
+description: Just An Amazing Full Hardware, System, Sim & Application Information Plugin For Android , Windows & Linux Devices.
+version: 1.0.0
 homepage: https://github.com/AymanYassinn
 repository: https://github.com/AymanYassinn/JFullInfo
 environment:
-  sdk: '>=2.18.2 <3.0.0'
-  flutter: ">=2.5.0"
+  sdk: '>=3.0.6 <4.0.0'
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  plugin_platform_interface: ^2.0.2
+  ffi: ">=2.0.0 <3.0.0"
+  file: ">=6.1.4 <8.0.0"
+  meta: ">=1.8.0 <2.0.0"
+  path: ">=1.8.0 <3.0.0"
+  win32: ">=4.0.0 <6.0.0"
+  win32_registry: ">=1.0.0 <2.0.0"
 
 dev_dependencies:
   flutter_test:
@@ -36,7 +43,10 @@ flutter:
       android:
         package: com.jucodes.jfullinfo
         pluginClass: JFullInfoPlugin
-
+      linux:
+        default_package: jfullinfo
+      windows:
+        default_package: jfullinfo
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

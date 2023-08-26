@@ -6,60 +6,6 @@ import 'dart:convert';
 ///[String] getter [securityPatch]
 ///[String] getter [codeName]
 ///[String] getter [release]
-///Has [JAndroidInfo.fromMap] Constructor
-///has [Map]type method called [toMap]
-///has [String]type method called [toString]
-class JAndroidInfo {
-  /// [JAndroidInfo] Constructor
-  JAndroidInfo();
-  String _fAndroidId = "",
-      _fAndroidSdk = "",
-      _fAndroidSecurityPatch = "",
-      _fAndroidCodeName = "",
-      _fAndroidRelease = "";
-
-  ///[String] getter [androidId]
-  String get androidId => _fAndroidId;
-
-  ///[String] getter [androidSdk]
-  String get androidSdk => _fAndroidSdk;
-
-  ///[String] getter [securityPatch]
-  String get securityPatch => _fAndroidSecurityPatch;
-
-  ///[String] getter [codeName]
-  String get codeName => _fAndroidCodeName;
-
-  ///[String] getter [release]
-  String get release => _fAndroidRelease;
-
-  /// [JAndroidInfo.fromMap] Constructor
-  JAndroidInfo.fromMap(var data) {
-    _fAndroidId = data["01"].toString();
-    _fAndroidSdk = data["02"].toString();
-    _fAndroidSecurityPatch = data["03"].toString();
-    _fAndroidCodeName = data["04"].toString();
-    _fAndroidRelease = data["05"].toString();
-  }
-
-  /// [Map]type method called [toMap]
-  Map<String, dynamic> toMap() => {
-        "androidId": _fAndroidId,
-        "androidSdk": _fAndroidSdk,
-        "securityPatch": _fAndroidSecurityPatch,
-        "codeName": _fAndroidCodeName,
-        "release": _fAndroidRelease,
-      };
-
-  /// [String]type method called [toString]
-  @override
-  String toString() {
-    return json.encode(toMap());
-  }
-}
-
-///class [JHardwareInfo] has
-///[String] getter [androidId]
 ///[String] getter [device]
 ///[String] getter [model]
 ///[String] getter [board]
@@ -73,13 +19,17 @@ class JAndroidInfo {
 ///[String] getter [product]
 ///[String] getter [bootloader]
 ///[String] _ [List] getter [deviceApis]
-///Has [JHardwareInfo.fromMap] Constructor
-///has [Map]type method called [toMap]
+///Has [JAndroidInfo.fromMap] Constructor
+///has [Map]getter called [info]
 ///has [String]type method called [toString]
-class JHardwareInfo {
-  /// [JHardwareInfo] Constructor
-  JHardwareInfo();
+class JAndroidInfo implements JOSInfoModel {
+  /// [JAndroidInfo] Constructor
+  JAndroidInfo();
   String _fAndroidId = "",
+      _fAndroidSdk = "",
+      _fAndroidSecurityPatch = "",
+      _fAndroidCodeName = "",
+      _fAndroidRelease = "",
       _fDevice = "",
       _fModel = "",
       _fBoard = "",
@@ -96,6 +46,18 @@ class JHardwareInfo {
 
   ///[String] getter [androidId]
   String get androidId => _fAndroidId;
+
+  ///[String] getter [androidSdk]
+  String get androidSdk => _fAndroidSdk;
+
+  ///[String] getter [securityPatch]
+  String get securityPatch => _fAndroidSecurityPatch;
+
+  ///[String] getter [codeName]
+  String get codeName => _fAndroidCodeName;
+
+  ///[String] getter [release]
+  String get release => _fAndroidRelease;
 
   ///[String] getter [device]
   String get device => _fDevice;
@@ -136,22 +98,26 @@ class JHardwareInfo {
   ///[String] _ [List] getter [deviceApis]
   List<String> get deviceApis => _fDeviceApis;
 
-  ///[JHardwareInfo.fromMap] Constructor
-  JHardwareInfo.fromMap(var data) {
+  /// [JAndroidInfo.fromMap] Constructor
+  JAndroidInfo.fromMap(var data) {
     _fAndroidId = data["01"].toString();
-    _fDevice = data["02"].toString();
-    _fModel = data["03"].toString();
-    _fBoard = data["04"].toString();
-    _fBrand = data["05"].toString();
-    _fDisplay = data["06"].toString();
-    _fFingerPrint = data["07"].toString();
-    _fBatteryLevel = data["08"].toString();
-    _fDeviceId = data["09"].toString();
-    _fHost = data["010"].toString();
-    _fManufacturer = data["011"].toString();
-    _fProduct = data["012"].toString();
-    _fBootloader = data["013"].toString();
-    _fDeviceApis = _getApis(data["014"]);
+    _fAndroidSdk = data["02"].toString();
+    _fAndroidSecurityPatch = data["03"].toString();
+    _fAndroidCodeName = data["04"].toString();
+    _fAndroidRelease = data["05"].toString();
+    _fDevice = data["06"].toString();
+    _fModel = data["07"].toString();
+    _fBoard = data["08"].toString();
+    _fBrand = data["09"].toString();
+    _fDisplay = data["010"].toString();
+    _fFingerPrint = data["011"].toString();
+    _fBatteryLevel = data["012"].toString();
+    _fDeviceId = data["013"].toString();
+    _fHost = data["014"].toString();
+    _fManufacturer = data["015"].toString();
+    _fProduct = data["016"].toString();
+    _fBootloader = data["017"].toString();
+    _fDeviceApis = _getApis(data["018"]);
   }
   List<String> _getApis(List s) {
     List<String> ss = [];
@@ -161,9 +127,20 @@ class JHardwareInfo {
     return ss;
   }
 
-  /// [Map]type method called [toMap]
-  Map<String, dynamic> toMap() => {
+  /// [String]type method called [toString]
+  @override
+  String toString() {
+    return json.encode(info);
+  }
+
+  ///[Map] getter [info]
+  @override
+  Map<String, dynamic> get info => {
         "androidId": _fAndroidId,
+        "androidSdk": _fAndroidSdk,
+        "securityPatch": _fAndroidSecurityPatch,
+        "codeName": _fAndroidCodeName,
+        "release": _fAndroidRelease,
         "device": _fDevice,
         "model": _fModel,
         "board": _fBoard,
@@ -178,15 +155,9 @@ class JHardwareInfo {
         "bootloader": _fBootloader,
         "deviceApis": _fDeviceApis,
       };
-
-  /// [String]type method called [toString]
-  @override
-  String toString() {
-    return json.encode(toMap());
-  }
 }
 
-///class [JApplicationInfo] has
+///class [JApplicationInfoAndroid] has
 
 ///[String] getter [versionCode]
 ///[String] getter [versionName]
@@ -197,12 +168,12 @@ class JHardwareInfo {
 ///[String] getter [firstInstall]
 ///[String] getter [dataDir]
 ///[String] _ [List] getter [permissions]
-///Has [JApplicationInfo.fromMap] Constructor
-///has [Map]type method called [toMap]
+///Has [JApplicationInfoAndroid.fromMap] Constructor
+///has [Map]getter called [info]
 ///has [String]type method called [toString]
-class JApplicationInfo {
-  /// [JApplicationInfo] Constructor
-  JApplicationInfo();
+class JApplicationInfoAndroid implements JApplicationInfo {
+  /// [JApplicationInfoAndroid] Constructor
+  JApplicationInfoAndroid();
   String _fAppVersionCode = "",
       _fAppVersionName = "",
       _fAppName = "",
@@ -240,8 +211,8 @@ class JApplicationInfo {
   ///[String] _ [List] getter [permissions]
   List<String> get permissions => _fAppPermissions;
 
-  /// [JApplicationInfo.fromMap] Constructor
-  JApplicationInfo.fromMap(var data) {
+  /// [JApplicationInfoAndroid.fromMap] Constructor
+  JApplicationInfoAndroid.fromMap(var data) {
     _fAppVersionCode = data["01"].toString();
     _fAppVersionName = data["02"].toString();
     _fAppName = data["03"].toString();
@@ -260,8 +231,9 @@ class JApplicationInfo {
     return ss;
   }
 
-  /// [Map]type method called [toMap]
-  Map<String, dynamic> toMap() => {
+  ///[Map] getter [info]
+  @override
+  Map<String, dynamic> get info => {
         "appUid": _fAppUid,
         "versionCode": _fAppVersionCode,
         "versionName": _fAppVersionName,
@@ -276,7 +248,7 @@ class JApplicationInfo {
   /// [String]type method called [toString]
   @override
   String toString() {
-    return json.encode(toMap());
+    return json.encode(info);
   }
 }
 
@@ -292,7 +264,7 @@ class JApplicationInfo {
 ///[String] getter [mcc]
 ///[String] getter [mnc]
 ///Has [JSimInfo.fromMap] Constructor
-///has [Map]type method called [toMap]
+///has [Map]getter called [toMap]
 ///has [String]type method called [toString]
 class JSimInfo {
   String _fSimSlotIndex = "",
@@ -350,8 +322,8 @@ class JSimInfo {
     _fSimMnc = data["010"].toString();
   }
 
-  /// [Map]type method called [toMap]
-  Map<String, dynamic> toMap() => {
+  ///[Map] getter [toMap]
+  Map<String, dynamic> get toMap => {
         "slotIndex": _fSimSlotIndex,
         "iccId": _fSimIccId,
         "cardId": _fSimCardId,
@@ -367,44 +339,39 @@ class JSimInfo {
   /// [String]type method called [toString]
   @override
   String toString() {
-    return json.encode(toMap());
+    return json.encode(toMap);
   }
 }
 
-///class [JInfoModel] has
+///class [JFullInfoAndroidModel] has
 ///[JAndroidInfo] getter [androidInfo]
-///[JHardwareInfo] getter [hardwareInfo]
-///[JApplicationInfo] getter [appInfo]
+///[JApplicationInfoAndroid] getter [appInfo]
 ///[JSimInfo] _ [List] getter [simInfo]
-///Has [JInfoModel.fromMap] Constructor
-///has [Map]type method called [toMap]
+///Has [JFullInfoAndroidModel.fromMap] Constructor
+///has [Map]getter called [toMap]
 ///has [String]type method called [toString]
-class JInfoModel {
-  /// [JInfoModel] Constructor
-  JInfoModel();
+class JFullInfoAndroidModel implements JFullInfoModel {
+  /// [JFullInfoAndroidModel] Constructor
+  JFullInfoAndroidModel();
   JAndroidInfo _fAndroidInf = JAndroidInfo();
-  JHardwareInfo _fJDeviceInfo = JHardwareInfo();
-  JApplicationInfo _fJApplicationInfo = JApplicationInfo();
+  JApplicationInfoAndroid _fJApplicationInfo = JApplicationInfoAndroid();
   List<JSimInfo> _fJSimInfo = [];
 
   ///[JAndroidInfo] getter [androidInfo]
   JAndroidInfo get androidInfo => _fAndroidInf;
 
-  ///[JHardwareInfo] getter [hardwareInfo]
-  JHardwareInfo get hardwareInfo => _fJDeviceInfo;
-
-  ///[JApplicationInfo] getter [appInfo]
-  JApplicationInfo get appInfo => _fJApplicationInfo;
+  ///[JApplicationInfoAndroid] getter [appInfo]
+  JApplicationInfoAndroid get appInfo => _fJApplicationInfo;
 
   ///[JSimInfo] _ [List] getter [simInfo]
   List<JSimInfo> get simInfo => _fJSimInfo;
 
-  /// [JInfoModel.fromMap] Constructor
-  JInfoModel.fromMap(var data) {
+  /// [JFullInfoAndroidModel.fromMap] Constructor
+  JFullInfoAndroidModel.fromMap(var data) {
     _fAndroidInf = JAndroidInfo.fromMap(json.decode(data["01"]));
-    _fJDeviceInfo = JHardwareInfo.fromMap(json.decode(data["02"]));
-    _fJSimInfo = _getSim(data["03"]);
-    _fJApplicationInfo = JApplicationInfo.fromMap(json.decode(data["04"]));
+    _fJSimInfo = _getSim(data["02"]);
+    _fJApplicationInfo =
+        JApplicationInfoAndroid.fromMap(json.decode(data["03"]));
   }
   List<JSimInfo> _getSim(List s) {
     List<JSimInfo> ss = [];
@@ -422,17 +389,43 @@ class JInfoModel {
     return ss;
   }
 
-  /// [Map]type method called [toMap]
-  Map<String, dynamic> toMap() => {
-        "androidInfo": _fAndroidInf.toString(),
-        "hardwareInfo": _fJDeviceInfo.toString(),
-        "appInfo": _fJApplicationInfo.toString(),
-        "simInfo": _getS(_fJSimInfo),
-      };
-
   /// [String]type method called [toString]
   @override
   String toString() {
-    return json.encode(toMap());
+    return json.encode(info);
+  }
+
+  @override
+  Map<String, dynamic> get info => {
+        "androidInfo": _fAndroidInf.toString(),
+        "appInfo": _fJApplicationInfo.toString(),
+        "simInfo": _getS(_fJSimInfo),
+      };
+}
+
+class JOSInfoModel {
+  JOSInfoModel(this.info);
+  final Map<String, dynamic> info;
+  @override
+  String toString() {
+    return json.encode(info);
+  }
+}
+
+class JApplicationInfo {
+  JApplicationInfo(this.info);
+  final Map<String, dynamic> info;
+  @override
+  String toString() {
+    return json.encode(info);
+  }
+}
+
+class JFullInfoModel {
+  JFullInfoModel(this.info);
+  final Map<String, dynamic> info;
+  @override
+  String toString() {
+    return json.encode(info);
   }
 }

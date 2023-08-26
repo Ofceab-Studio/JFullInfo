@@ -1,10 +1,12 @@
 # jfullinfo
 
-JFullInfo: Just An Amazing Full Hardware, System, Sim & Application Information Plugin For Android Devices.
+JFullInfo: Just An Amazing Full Hardware, System, Sim & Application Information Plugin For Android , Windows & Linux Devices.
 
 ## Features
 - Get Full Device Information
 - Get Full Android Information
+- Get Full Windows Information
+- Get Full Linux Information
 - Get Full SIM Card Information
 - Get Full Application Information
 - Get All Information

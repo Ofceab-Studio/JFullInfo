@@ -1,28 +1,28 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:jfullinfo/jDataModels.dart';
+import 'package:jfullinfo/jfullinfo.dart';
 
-///[JFullInfo] The root class for jfullinfo Plugin
+import 'package:jfullinfo/src/_models/_android_models.dart';
+
+///[JFullInfoAndroid] The root class for jfullinfo Android Implementation Plugin
 ///
-/// has a [Future] method called [getAndroidInformation] has [JAndroidInfo] return type.
+/// has a [Future] method called [getOsInformation] has [JAndroidInfo] return type.
 ///
-/// has a [Future] method called [getHardwareInformation] has [JHardwareInfo] return type.
+/// has a [Future] method called [getApplicationInformation] has [JApplicationInfoAndroid] return type.
 ///
-/// has a [Future] method called [getApplicationInformation] has [JApplicationInfo] return type.
-///
-/// has a [Future] method called [getAllInformation] has [JInfoModel] return type.
+/// has a [Future] method called [getAllInformation] has [JFullInfoAndroidModel] return type.
 ///
 /// has a [Future] method called [getSimInformation] has [List] of [JSimInfo] return type.
-class JFullInfo {
+class JFullInfoAndroid extends JFullInfo {
   static const String _ANDROID_INFO = "AndroidInfo";
   static const String _SIM_INFO = "SimInfo";
-  static const String _DEVICE_INFO = "DeviceInfo";
   static const String _APPLICATION_INFO = "ApplicationInfo";
   static const String _ALL_INFO = "AllInfo";
   static const _methodChannel = MethodChannel('JFullInfo');
 
-  /// [Future] method called [getAndroidInformation] has [JAndroidInfo] return type.
-  Future<JAndroidInfo> getAndroidInformation() async {
+  /// [Future] method called [getOsInformation] has [JAndroidInfo] return type.
+  @override
+  Future<JAndroidInfo> getOsInformation() async {
     JAndroidInfo androidInfo = JAndroidInfo();
     try {
       final value = await _methodChannel.invokeMethod<String>(_ANDROID_INFO);
@@ -36,30 +36,16 @@ class JFullInfo {
     }
   }
 
-  ///[Future] method called [getHardwareInformation] has [JHardwareInfo] return type.
-  Future<JHardwareInfo> getHardwareInformation() async {
-    JHardwareInfo hardwareInfo = JHardwareInfo();
-    try {
-      final value = await _methodChannel.invokeMethod<String>(_DEVICE_INFO);
-      if (value != null) {
-        final val = json.decode(value);
-        hardwareInfo = JHardwareInfo.fromMap(val);
-      }
-      return hardwareInfo;
-    } catch (e) {
-      return hardwareInfo;
-    }
-  }
-
-  ///[Future] method called [getApplicationInformation] has [JApplicationInfo] return type.
-  Future<JApplicationInfo> getApplicationInformation() async {
-    JApplicationInfo applicationInfo = JApplicationInfo();
+  ///[Future] method called [getApplicationInformation] has [JApplicationInfoAndroid] return type.
+  @override
+  Future<JApplicationInfoAndroid> getApplicationInformation() async {
+    JApplicationInfoAndroid applicationInfo = JApplicationInfoAndroid();
     try {
       final value =
           await _methodChannel.invokeMethod<String>(_APPLICATION_INFO);
       if (value != null) {
         final val = json.decode(value);
-        applicationInfo = JApplicationInfo.fromMap(val);
+        applicationInfo = JApplicationInfoAndroid.fromMap(val);
       }
       return applicationInfo;
     } catch (e) {
@@ -67,14 +53,15 @@ class JFullInfo {
     }
   }
 
-  ///[Future] method called [getAllInformation] has [JInfoModel] return type.
-  Future<JInfoModel> getAllInformation() async {
-    JInfoModel allInfo = JInfoModel();
+  ///[Future] method called [getAllInformation] has [JFullInfoAndroidModel] return type.
+  @override
+  Future<JFullInfoAndroidModel> getAllInformation() async {
+    JFullInfoAndroidModel allInfo = JFullInfoAndroidModel();
     try {
       final value = await _methodChannel.invokeMethod<String>(_ALL_INFO);
       if (value != null) {
         final val = json.decode(value);
-        allInfo = JInfoModel.fromMap(val);
+        allInfo = JFullInfoAndroidModel.fromMap(val);
       }
       return allInfo;
     } catch (e) {
@@ -83,6 +70,7 @@ class JFullInfo {
   }
 
   ///[Future] method called [getSimInformation] has [List] of [JSimInfo] return type.
+  @override
   Future<List<JSimInfo>> getSimInformation() async {
     List<JSimInfo> simInfo = [];
     try {
